@@ -33,7 +33,7 @@ class TReiner(Resource):
                   data[id] = sub_dict
             return data
 
-api.add_resource(TReiner, '/')
+api.add_resource(TReiner, '/api/')
 
 if __name__ == '__main__':
       app.run(debug=True, host='0.0.0.0')

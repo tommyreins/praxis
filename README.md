@@ -1,3 +1,3 @@
 # praxis
 
-A simple website made pretty with bulma
+a simple website made pretty with bulma

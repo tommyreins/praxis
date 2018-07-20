@@ -8,8 +8,8 @@ app = Flask(__name__)
 api = Api(app)
 
 class TReiner(Resource):
-      def get(self):
-            conn = sqlite3.connect('backend.db')
+      def login(self):
+            conn = sqlite3.connect('praxis.db')
             c = conn.cursor()
             
             c.execute("SELECT * FROM TASKS")
@@ -36,5 +36,5 @@ class TReiner(Resource):
 api.add_resource(TReiner, '/api/')
 
 if __name__ == '__main__':
-      app.run(debug=True, host='0.0.0.0')
+      app.run(debug=False, host='0.0.0.0')
 

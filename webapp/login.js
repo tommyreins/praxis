@@ -5,7 +5,6 @@ function onSuccess(googleUser) {
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   document.location.href = "create.html";
-
 }
 function onFailure(error) {
   console.log(error);

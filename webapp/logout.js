@@ -4,6 +4,9 @@ function signMeOut() {
     auth2.signOut().then(function () {
         console.log('User signed out.');
     });
+    window.setTimeout(function () {
+        location.href = "index.html";
+    }, 2000);
 }
 function Init() {
     console.log('Init...');

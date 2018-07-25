@@ -4,10 +4,7 @@ function onSuccess(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  window.setTimeout(function () {
-    // Move to a new location or you can do something else
-    location.href = "create.html";
-  }, 5000);
+  document.location.href = "create.html";
 
 }
 function onFailure(error) {

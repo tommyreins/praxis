@@ -24,14 +24,12 @@ function renderButton() {
     'onfailure': onFailure
   });
 }
-
 function Init() {
   console.log('Init...');
   gapi.load('auth2', function() {
     gapi.auth2.init();
   });
 }
-
 function signMeOut() {
   console.log('Signing out...');
   var auth2 = gapi.auth2.getAuthInstance();

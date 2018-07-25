@@ -1,58 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>praxis</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>praxis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+
+<body>
   <section class="section">
-    <div class="container">
-      <h2 class="title">
-        enter new log
-      </h2>
-      <p class="subtitle">
-        this will be used to create new tasks  
-      </p>
+    <div class="container level is-mobile">
+      <div class="level-left">
+        <div>
+          <h2 class="title">
+            enter new log
+          </h2>
+          <p class="subtitle">
+            this will be used to create new tasks
+          </p>
+        </div>
+      </div>
+      <div class="level-right">
+        <a class="button is-primary is-outlined" onclick="signOut();">Logout</a>
+        <script>
+            function signOut() {
+              var auth2 = gapi.auth2.getAuthInstance();
+              auth2.signOut().then(function () {
+                console.log('User signed out.');
+              });
+            }
+          </script>
+      </div>
     </div>
     <br>
     <div class="container">
       <div class="field">
-          <label class="label">kind</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="kind">
-          </div>
-          <p class="help">i.e. productivity</p>
+        <label class="label">kind</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="kind">
+        </div>
+        <p class="help">i.e. productivity</p>
       </div>
       <div class="field">
-          <label class="label">location</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="location">
-          </div>
-          <p class="help">i.e. apartment</p>
+        <label class="label">location</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="location">
+        </div>
+        <p class="help">i.e. apartment</p>
       </div>
       <div class="field">
-          <label class="label">name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="name">
-          </div>
-          <p class="help">i.e. coding</p>
+        <label class="label">name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="name">
+        </div>
+        <p class="help">i.e. coding</p>
       </div>
       <div class="field is-grouped">
-          <p class="control">
-            <a class="button is-primary">
-              submit
-            </a>
-          </p>
-          <p class="control">
-            <a class="button is-light">
-              cancel
-            </a>
-          </p>
+        <p class="control">
+          <a class="button is-primary">
+            submit
+          </a>
+        </p>
+        <p class="control">
+          <a class="button is-light">
+            cancel
+          </a>
+        </p>
       </div>
     </div>
   </section>
-  </body>
+</body>
+
 </html>

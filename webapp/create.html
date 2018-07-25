@@ -7,7 +7,7 @@
   <title>praxis</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=Onload" async defer></script>
 </head>
 
 <body>
@@ -26,13 +26,18 @@
       <div class="level-right">
         <a class="button is-primary is-outlined" onclick="signOut();">Logout</a>
         <script>
-            function signOut() {
-              var auth2 = gapi.auth2.getAuthInstance();
-              auth2.signOut().then(function () {
-                console.log('User signed out.');
-              });
-            }
-          </script>
+          function onLoad() {
+            gapi.load('auth2', function () {
+              gapi.auth2.init();
+            });
+          }
+          function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+              console.log('User signed out.');
+            });
+          }
+        </script>
       </div>
     </div>
     <br>

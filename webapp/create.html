@@ -14,22 +14,15 @@
 
 <body>
   <section class="section">
-    <div class="container level is-mobile">
-      <div class="level-left">
-        <div>
-          <h2 class="title">
-            enter new log
-          </h2>
-          <p class="subtitle">
-            this will be used to create new tasks
-          </p>
-        </div>
-      </div>
-      <div class="level-right">
-        <a class="button is-primary is-outlined" onclick="signMeOut();">Logout</a>
-        <script src="https://apis.google.com/js/platform.js?onload=Init" async defer></script>
-      </div>
+    <div>
+      <h2 class="title">
+        praxis
+      </h2>
+      <p class="subtitle">
+        create item
+      </p>
     </div>
+
     <br>
     <div class="container">
       <div class="field">
@@ -67,6 +60,30 @@
       </div>
     </div>
   </section>
+  <nav class="navbar is-fixed-bottom is-primary">
+      <div class="navbar-brand">
+          <div class="navbar-burger burger" data-target="bottomNav">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+    <div id="bottomNav" class="navbar-menu">
+      <div class="navbar-start">
+        <!-- navbar items -->
+      </div>
+      <div class="navbar-end">
+        <!-- navbar items -->
+        <div class="navbar-item">
+            <a class="button is-primary is-inverted" onclick="signMeOut();">Logout</a>
+            <script src="https://apis.google.com/js/platform.js?onload=Init" async defer></script>
+    
+        </div>
+     </div>
+    </div>
+  </nav>
+
 </body>
 
 </html>

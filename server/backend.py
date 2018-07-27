@@ -8,7 +8,7 @@ app = Flask(__name__)
 api = Api(app)
 
 
-class Login(Resource):
+class TReiner(Resource):
     def GET(self):
         conn = sqlite3.connect('C:\sqlite\praxis.db')
         c = conn.cursor()

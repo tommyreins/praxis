@@ -11,7 +11,7 @@ api = Api(app)
 
 
 class Login(Resource):
-    def Put(self, login_token):
+    def PUT(self, login_token):
         # google auth 
         request = requests.Request()
         try:
@@ -37,4 +37,4 @@ class Login(Resource):
 api.add_resource(Login, '/login/')
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=8080)
+    app.run(debug=False, host='0.0.0.0', port=5000)

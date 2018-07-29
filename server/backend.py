@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 from google.oauth2 import id_token
 from google.auth.transport import requests
@@ -11,10 +11,15 @@ api = Api(app)
 
 
 class Login(Resource):
-    def Put(self, login_token):
-        # google auth 
-        request = requests.Request()
+    def get(self):
+        return {'hello': 'world'}
+
+    def post(self):
         try:
+            # google auth 
+            # request = requests.Request()
+            login_token = request.form['login_token']
+            print(login_token)
             id_info = id_token.verify_oauth2_token(
                 login_token, request, '592019730220-i4op0q91nquh8hoeccreoui2pvvhjr6d')
             if id_info['iss'] != 'https://accounts.google.com':
@@ -29,7 +34,10 @@ class Login(Resource):
             print(c.fetchone)
 
         except ValueError:
-            pass
+            msg = "something was wrong with the token"
+            print(msg)
+            return {'error' : msg}
+             
         
 
 
@@ -37,4 +45,4 @@ class Login(Resource):
 api.add_resource(Login, '/login/')
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=8080)
+    app.run(debug=False, host='0.0.0.0', port=5000)

@@ -16,12 +16,12 @@ class Login(Resource):
 
     def post(self):
         try:
-            # google auth 
+            # google auth
             # request = requests.Request()
             login_token = request.form['login_token']
             print(login_token)
             id_info = id_token.verify_oauth2_token(
-                login_token, request, '592019730220-i4op0q91nquh8hoeccreoui2pvvhjr6d')
+                login_token, requests.Request(), '592019730220-i4op0q91nquh8hoeccreoui2pvvhjr6d')
             if id_info['iss'] != 'https://accounts.google.com':
                 print(id_info)
                 raise ValueError('Wrong issuer.')
@@ -37,9 +37,6 @@ class Login(Resource):
             msg = "something was wrong with the token"
             print(msg)
             return {'error' : msg}
-             
-        
-
 
 
 api.add_resource(Login, '/login/')

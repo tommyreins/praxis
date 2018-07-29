@@ -19,11 +19,11 @@ class Login(Resource):
             # google auth
             # request = requests.Request()
             login_token = request.form['login_token']
-            print(login_token)
+            print('login token received: ' + login_token)
             id_info = id_token.verify_oauth2_token(
                 login_token, requests.Request(), '592019730220-i4op0q91nquh8hoeccreoui2pvvhjr6d')
             if id_info['iss'] != 'https://accounts.google.com':
-                print(id_info)
+                print('iss received: ' + id_info)
                 raise ValueError('Wrong issuer.')
             user_id = id_info['sub']
             user_email = id_info['email']

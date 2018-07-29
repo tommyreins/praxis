@@ -34,7 +34,7 @@ class Login(Resource):
 
             conn = sqlite3.connect('praxis.db')
             c = conn.cursor()
-            c.execute('SELECT * FROM users WHERE user_id = "{0}" and name = "{1}" and email = "{2}" and activated = 1'.format(user_id, user_name, user_email))
+            c.execute('SELECT * FROM user WHERE user_id = "{0}" and name = "{1}" and email = "{2}" and activated = 1'.format(user_id, user_name, user_email))
             print(c.fetchone)
 
         except ValueError:

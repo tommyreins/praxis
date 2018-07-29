@@ -1,8 +1,8 @@
 function onSuccess(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://ssh.tomreins.com:5000/login');
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.open('POST', 'http://ssh.tomreins.com:5000/login/');
+  // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
     console.log('Signed in as: ' + xhr.responseText);
   };

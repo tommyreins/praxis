@@ -3,7 +3,7 @@ function onSuccess(googleUser) {
   console.log("cache is working?");
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'https://praxis.tomreins.com/api/');
-  // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
     console.log('Signed in as: ' + xhr.responseText);
   };

@@ -1,18 +1,18 @@
 function onSuccess(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
-  console.log("cache is working?");
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'https://praxis.tomreins.com/api/');
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
     console.log('Signed in as: ' + xhr.responseText);
+    document.location.href = "create.html";
   };
   xhr.send('login_token=' + id_token);
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  // var profile = googleUser.getBasicProfile();
+  // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  // console.log('Name: ' + profile.getName());
+  // console.log('Image URL: ' + profile.getImageUrl());
+  // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   // document.location.href = "create.html";
 }
 function onFailure(error) {

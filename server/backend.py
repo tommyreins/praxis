@@ -17,7 +17,6 @@ class Login(Resource):
     def post(self):
         try:
             # google auth
-            # request = requests.Request()
             login_token = request.form['login_token']
             print('login token received')
             id_info = id_token.verify_oauth2_token(
@@ -31,12 +30,17 @@ class Login(Resource):
             print('email: ' + user_email)
             user_name = id_info['name']
             print('name: ' + user_name)
-
+            # check if user has auth
             conn = sqlite3.connect('praxis.db')
             c = conn.cursor()
             c.execute('SELECT * FROM user WHERE user_id = "{0}" and name = "{1}" and email = "{2}" and activated = 1'.format(user_id, user_name, user_email))
-            print(c.fetchone())
-            return {'user' : user_name}
+            user_row = c.fetchone()
+            print(user_row)
+            if user_row is 1:
+                print('user has auth')
+                return {'user' : user_name}
+            else:
+                return{'user' : 'not found'}
 
         except ValueError:
             msg = "something was wrong with the token"

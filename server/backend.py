@@ -36,7 +36,7 @@ class Login(Resource):
             c.execute('SELECT * FROM user WHERE user_id = "{0}" and name = "{1}" and email = "{2}" and activated = 1'.format(user_id, user_name, user_email))
             user_row = c.fetchone()
             print(user_row)
-            if user_row is 1:
+            if user_row[1] is 1:
                 print('user has auth')
                 return {'user' : user_name}
             else:

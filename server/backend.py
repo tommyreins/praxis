@@ -46,11 +46,12 @@ class Login(Resource):
                 # user_id varchar(255),
                 # session_id varchar(255),
                 # session_start_time timestamp);
-                random_bytes = urandom(64)
+                random_bytes = urandom(5)
                 session_id = b64encode(random_bytes).decode('utf-8')
                 print(session_id)
-                c.execute('insert into session (user_id, session_id, session_start_time) values ({0}, {1}, {2})'.format(user_id, session_id, datetime.datetime.now()))
-
+                c.execute("""insert into session (user_id, session_id, session_start_time) values ('{0}', '{1}', '{2}')""".format(user_id, session_id, datetime.datetime.now()))
+                conn.commit()
+                conn.close()
                 return {'user' : user_name,
                         'session_id' : session_id}
             else:

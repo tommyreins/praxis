@@ -4,7 +4,10 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 from objdict import ObjDict
 import sqlite3
+from sqlite3 import datetime
 import json
+from os import urandom
+from base64 import b64encode
 
 app = Flask(__name__)
 api = Api(app)
@@ -38,7 +41,18 @@ class Login(Resource):
             print(user_row)
             if user_row[1] is 1:
                 print('user has auth')
-                return {'user' : user_name}
+                print('creating session')
+                # CREATE TABLE session (
+                # user_id varchar(255),
+                # session_id varchar(255),
+                # session_start_time timestamp);
+                random_bytes = urandom(64)
+                session_id = b64encode(random_bytes).decode('utf-8')
+                print(session_id)
+                c.execute('insert into session (user_id, session_id, session_start_time) values ({0}, {1}, {3})'.format(user_id, session_id, datetime.datetime.now()))
+
+                return {'user' : user_name,
+                        'session_id' : session_id}
             else:
                 return{'user' : 'not found'}
 
